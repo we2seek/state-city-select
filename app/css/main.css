@@ -1,4 +1,31 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=cyrillic-ext';
 body {
-  font: 100% "Roboto Condensed", sans-serif;
+  font: 14px "Roboto Condensed", sans-serif;
   color: #444; }
+
+svg {
+  height: 16.19912px;
+  width: 16.19912px; }
+  svg circle {
+    r: 7px;
+    cx: 8.09956px;
+    cy: 8.09956px;
+    transition: all 0.2s ease;
+    animation: do 2.5s ease infinite, do2 0.75s linear infinite;
+    transform-origin: center;
+    stroke: #545B61;
+    stroke-width: 2.19912px;
+    stroke-dasharray: 4.39824px 43.9824px;
+    stroke-linecap: round;
+    fill: transparent; }
+
+@keyframes do {
+  0% { }
+  50% {
+    stroke-dasharray: 2.19912px 3.6652px; } }
+
+@keyframes do2 {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }

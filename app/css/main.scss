@@ -4,6 +4,44 @@ $font-stack:    "Roboto Condensed", sans-serif;
 $primary-color: #444;
 
 body {
-  font: 100% $font-stack;
-  color: $primary-color;
+    font: 14px $font-stack;
+    color: $primary-color;
+}
+
+$pi: 3.1416;
+$r: 7px;
+
+$circ: $pi * $r * 2;
+
+$stroke-width: $circ / 20;
+
+$offset: $stroke-width / 2;
+$size: ($r * 2) + $stroke-width;
+
+svg{
+    height: $size;
+    width: $size;
+    circle {
+        r: $r;
+        cx: $r + $offset;
+        cy: $r+$offset;
+        transition: all 0.2s ease;
+        animation: do 2.5s ease infinite, do2 0.75s linear infinite;
+        transform-origin: center;
+        stroke: #545B61;
+        stroke-width: $stroke-width;
+        stroke-dasharray: ($circ / 10) ($circ / 1);
+        stroke-linecap: round;
+        fill: transparent;
+    }
+}
+
+@keyframes do {
+    0% { }
+    50% { stroke-dasharray: ($circ / 20) ($circ / 12);}
+}
+
+@keyframes do2 {
+    0% { transform: rotate(0deg)}
+    100% { transform: rotate(360deg)}
 }

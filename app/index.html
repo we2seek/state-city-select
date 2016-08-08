@@ -6,36 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Поштові індекси</title>
     <link rel="icon" href="favicon.gif" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css.map">
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" href="css/main.css">
 
 </head>
 <body ng-controller="MainController">
-    <pre ng-bind="selectedState.id + '. ' + selectedState.name"></pre>
-    <pre ng-bind="selectedCity.id + '. ' + selectedCity.name"></pre>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h4>Пошук поштового індексу</h4>
+                <p ng-hide="noResults">&nbsp;</p>
+                <p ng-show="noResults">Нічого не знайдено</p>
+                
+                <div class="input-group">
+                    <input type="text" 
+                    ng-model="selected"
+                    ng-model-options="modelOptions"
+                    typeahead-loading="loadingStates"
+                    typeahead-no-results="noResults"
+                    uib-typeahead="state as state.name for state in getStates($viewValue)"
+                    typeahead-min-length="1"
+                    placeholder="Введіть назву міста"
+                    class="form-control">
 
-    <select 
-        ng-model="selectedState"
-        ng-options="state.name for state in states track by state.id"
-        ng-change="loadCities()">
-            <option value="" disabled>{{msgSelectState}}</option>
-    </select>
+                    <span ng-hide="loadingStates" class="input-group-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                    <span ng-show="loadingStates" class="input-group-addon">
+                        <svg><circle/></svg>
+                    </span>
+                </div>
 
-    <select ng-show="cities.length"
-        ng-model="selectedCity"
-        ng-options="city.name for city in cities track by city.id">
-            <option value="" disabled>{{msgSelectCity}}</option>
-    </select>
-    <br><br><br>
-    <p>Область: {{selected}}</p>
-    <div>
-        <input type="text" 
-        ng-model="selected"
-        autocomplete="off" 
-        uib-typeahead="item as item.name for item in states | filter:$viewValue class="form-control">    
+            </div>
+
+        </div>
     </div>
 
-    
+
+
 
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
