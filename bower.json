@@ -1,0 +1,16 @@
+{
+  "name": "uib-accordion",
+  "description": "Learn how to work with Angular Bootstrap Accordion",
+  "main": "index.js",
+  "authors": [
+    "Vitaliy Timchenko <vitaliy.timchenko@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-bootstrap": "^2.0.1",
+    "angular-animate": "^1.5.8"
+  }
+}

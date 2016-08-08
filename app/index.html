@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Поштові індекси</title>
+    <link rel="icon" href="favicon.gif" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body ng-controller="MainController">
+    <pre ng-bind="selectedState.id + '. ' + selectedState.name"></pre>
+    <pre ng-bind="selectedCity.id + '. ' + selectedCity.name"></pre>
+
+    <select 
+        ng-model="selectedState"
+        ng-options="state.name for state in states track by state.id"
+        ng-change="loadCities()">
+            <option value="" disabled>{{msgSelectState}}</option>
+    </select>
+
+    <select ng-show="cities.length"
+        ng-model="selectedCity"
+        ng-options="city.name for city in cities track by city.id">
+            <option value="" disabled>{{msgSelectCity}}</option>
+    </select>
+    <br><br><br>
+    <p>Область: {{selected}}</p>
+    <div>
+        <input type="text" 
+        ng-model="selected"
+        autocomplete="off" 
+        uib-typeahead="item as item.name for item in states | filter:$viewValue class="form-control">    
+    </div>
+
+    
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
